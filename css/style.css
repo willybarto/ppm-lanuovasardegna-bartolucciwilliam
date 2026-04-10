@@ -41,30 +41,30 @@
 
 :root {
     /* Superfici */
-    --color-bg:               #f5f4f1;
+    --color-bg:               #ffffff;
     --color-surface:          #ffffff;
-    --color-surface-2:        #f9f9f7;
+    --color-surface-2:        #f7f7f5;
     --color-border:           rgba(26, 26, 26, 0.12);
-    --color-divider:          #e2e0db;
+    --color-divider:          #e8e8e8;
 
     /* Testo */
     --color-text:             #1a1a1a;
     --color-text-muted:       #5c5c5c;
     --color-text-faint:       #a0a0a0;
 
-    /* Accent editoriale — rosso La Nuova Sardegna */
-    --color-primary:          #c0001a;
-    --color-primary-dark:     #990014;
+    /* Accent editoriale — rosso bordeaux La Nuova Sardegna (rgb(146, 20, 33)) */
+    --color-primary:          #921421;
+    --color-primary-dark:     #6e0f19;
     --color-primary-highlight: #fce8eb;
 
     /* Breaking / accent secondario */
-    --color-breaking:         #d63a00;
-    --color-accent:           #c0001a;
-    --color-accent-dark:      #990014;
+    --color-breaking:         #921421;
+    --color-accent:           #921421;
+    --color-accent-dark:      #6e0f19;
 
-    /* Navbar sfondo scuro */
-    --color-nav-bg:           #1a1a1a;
-    --color-nav-bg-hover:     #2a2a2a;
+    /* Navbar sfondo — blu scuro La Nuova Sardegna (rgb(6, 58, 116)) */
+    --color-nav-bg:           #063a74;
+    --color-nav-bg-hover:     #0a4d9c;
 
     /* Font stacks */
     --font-display: 'Playfair Display', Georgia, serif;
@@ -661,10 +661,10 @@ button:focus-visible {
 /* --- Network SAE --- */
 
 .network-sae {
-    padding: 14px 0 16px;
+    padding: 10px 0 12px;
     margin-bottom: 28px;
     background: var(--color-surface);
-    border-top: 2px solid var(--color-primary);
+    border-top: 1px solid var(--color-divider);
     border-bottom: 1px solid var(--color-divider);
 }
 
@@ -672,96 +672,50 @@ button:focus-visible {
 
 .network-title {
     font-family: var(--font-body);
-    font-size: var(--text-sm);
+    font-size: 11px;
     font-weight: 700;
-    color: var(--color-text-muted);
-    margin-bottom: 14px;
+    color: var(--color-text);
+    margin-bottom: 10px;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.05em;
 }
 
-.network-track-wrapper {
-    overflow: hidden;
-    width: 100%;
+/* Lista loghi Network SAE — strip orizzontale statica */
+.network-logos {
     display: flex;
-    position: relative;
-}
-
-.network-track-wrapper::before,
-.network-track-wrapper::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 40px;
-    z-index: 2;
-    pointer-events: none;
-}
-.network-track-wrapper::before {
-    left: 0;
-    background: linear-gradient(to right, var(--color-surface), transparent);
-}
-.network-track-wrapper::after {
-    right: 0;
-    background: linear-gradient(to left, var(--color-surface), transparent);
-}
-
-.network-track {
-    display: flex;
-    flex-shrink: 0;
+    flex-wrap: wrap;
+    align-items: center;
     list-style: none;
     margin: 0;
     padding: 0;
-    animation: network-scroll 22s linear infinite;
-    will-change: transform;
+    gap: 0;
 }
 
-.network-track-wrapper:hover .network-track {
-    animation-play-state: paused;
-}
-
-.network-track li {
-    flex: 0 0 auto;
+.network-logos li {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0 28px;
+    padding: 4px 20px;
     border-right: 1px solid var(--color-divider);
 }
-.network-track li:last-child { border-right: 0; }
+.network-logos li:first-child { padding-left: 0; }
+.network-logos li:last-child { border-right: none; }
 
-.network-track li a {
+.network-logos li a {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 56px;
     text-decoration: none;
     transition: opacity 0.2s;
 }
-.network-track li a:hover { opacity: 0.7; }
+.network-logos li a:hover { opacity: 0.65; }
 
-.network-logo-placeholder {
-    display: inline-block;
-    font-family: var(--font-display);
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 0.3px;
-    white-space: nowrap;
-    color: var(--color-text);
-    border: 1.5px solid var(--color-border);
-    padding: 5px 13px;
-    border-radius: var(--radius-sm);
-    transition: background 0.2s, color 0.2s, border-color 0.2s;
-}
-.network-track li a:hover .network-logo-placeholder {
-    background: var(--color-primary);
-    color: #fff;
-    border-color: var(--color-primary);
-}
-
-@keyframes network-scroll {
-    0%   { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+.network-logos img {
+    display: block;
+    height: 36px;
+    width: auto;
+    max-width: 130px;
+    object-fit: contain;
 }
 
 /* --- Blocchi extra --- */
@@ -942,7 +896,307 @@ button:focus-visible {
 
 
 /* ============================================================
-   15. BLOCCO SCURO (Speciale Economia)
+   15. IN EVIDENZA — Layout 2 colonne (main grid + sidebar)
+   Riproduce fedelmente il layout del sito La Nuova Sardegna
+   come da screenshot e istruzioni del professore.
+   ============================================================ */
+
+/* Contenitore principale: griglia 2 colonne — ~68% main + ~32% sidebar */
+.in-evidenza-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 28px;
+    align-items: start;
+    margin-bottom: 32px;
+}
+
+/* ── COLONNA SINISTRA — Griglia articoli In evidenza ── */
+
+.in-evidenza-main {
+    min-width: 0;
+}
+
+/* Card generica "In evidenza" */
+.ev-card {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+/* Card featured: immagine grande full-width + titolo in evidenza */
+.ev-card--featured {
+    margin-bottom: 18px;
+}
+
+.ev-card--featured .ev-card-img img {
+    aspect-ratio: 16 / 9;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+.ev-card--featured .ev-card-img:hover img { transform: scale(1.02); }
+
+.ev-card--featured h3 {
+    margin-top: 6px;
+    font-family: var(--font-display);
+    font-size: clamp(1.1rem, 0.9rem + 0.7vw, 1.4rem);
+    font-weight: 700;
+    line-height: 1.25;
+    color: var(--color-text);
+}
+.ev-card--featured h3 a:hover { color: var(--color-primary); }
+
+/* Righe a 2 colonne uguali */
+.ev-row--2col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--color-divider);
+}
+.ev-row--2col:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+/* Immagine nelle card normali */
+.ev-card-img {
+    display: block;
+    overflow: hidden;
+}
+
+.ev-card-img img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+.ev-card-img:hover img { transform: scale(1.03); }
+
+/* Titoli h3 nelle card normali */
+.ev-card h3 {
+    margin-top: 6px;
+    font-family: var(--font-display);
+    font-size: 0.92rem;
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--color-text);
+}
+.ev-card h3 a:hover { color: var(--color-primary); }
+
+/* Variante card senza immagine con lista bullet (es. "L'oro rosso") */
+.ev-card--text-list h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+/* Lista bullet con triangolino rosso, stile redazionale */
+.ev-bullets {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 8px;
+    padding: 0;
+    list-style: none;
+}
+
+.ev-bullets li {
+    padding-left: 14px;
+    position: relative;
+}
+
+.ev-bullets li::before {
+    content: "▶";
+    position: absolute;
+    left: 0;
+    top: 1px;
+    font-size: 0.6rem;
+    color: var(--color-primary);
+    line-height: 1.6;
+}
+
+.ev-bullets li a {
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    font-weight: 500;
+    line-height: 1.45;
+    color: var(--color-primary);
+    transition: color 0.18s, text-decoration 0.18s;
+}
+.ev-bullets li a:hover {
+    color: var(--color-primary-dark);
+    text-decoration: underline;
+}
+
+/* Firma autore sotto gli articoli */
+.ev-byline {
+    margin-top: 5px;
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-style: italic;
+    color: var(--color-text-faint);
+}
+
+/* ── COLONNA DESTRA — Sidebar "Cultura e Spettacoli" ── */
+
+.in-evidenza-sidebar {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    /* Sticky: rimane visibile durante lo scroll della griglia */
+    position: sticky;
+    top: 0;
+}
+
+/* Header sidebar — blu scuro La Nuova Sardegna, testo bianco */
+.sidebar-head {
+    background: var(--color-nav-bg);
+    padding: 10px 14px;
+    margin-bottom: 12px;
+}
+
+.sidebar-head h2 {
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #fff;
+    margin: 0;
+}
+
+/* Card verticale nella sidebar */
+.sidebar-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-bottom: 14px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--color-divider);
+}
+.sidebar-card:last-of-type {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.sidebar-card-img {
+    display: block;
+    overflow: hidden;
+    margin-bottom: 6px;
+}
+
+.sidebar-card-img img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+.sidebar-card-img:hover img { transform: scale(1.03); }
+
+.sidebar-card h3 {
+    font-family: var(--font-display);
+    font-size: 0.88rem;
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--color-text);
+    margin-top: 4px;
+}
+.sidebar-card h3 a:hover { color: var(--color-primary); }
+
+/* Pulsante CTA "TUTTI GLI ARTICOLI" — rosso editoriale */
+.sidebar-cta {
+    display: block;
+    margin: 14px 0 16px;
+    padding: 10px 16px;
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-align: center;
+    color: #fff;
+    background: var(--color-primary);
+    border-radius: var(--radius-sm);
+    transition: background 0.18s;
+}
+.sidebar-cta:hover { background: var(--color-primary-dark); }
+
+/* Spazio pubblicitario in sidebar */
+.sidebar-ad {
+    border: 1px dashed var(--color-divider);
+    border-radius: var(--radius-sm);
+    padding: 8px;
+    text-align: center;
+    background: var(--color-surface-2);
+}
+
+.sidebar-ad-label {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 0.68rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-text-faint);
+    margin-bottom: 6px;
+}
+
+.sidebar-ad-placeholder {
+    width: 100%;
+    min-height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-divider);
+    color: var(--color-text-faint);
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    border-radius: var(--radius-sm);
+}
+
+/* ── RESPONSIVE — In evidenza ── */
+
+/* Tablet largo (≤ 980px): sidebar si sposta sotto la griglia principale */
+@media (max-width: 980px) {
+    .in-evidenza-wrapper {
+        grid-template-columns: 1fr;
+    }
+    .in-evidenza-sidebar {
+        position: static;
+        border-top: 2px solid var(--color-primary);
+        padding-top: 16px;
+    }
+}
+
+/* Mobile (≤ 620px): le righe a 2 colonne diventano 1 colonna */
+@media (max-width: 620px) {
+    .ev-row--2col {
+        grid-template-columns: 1fr;
+    }
+    .ev-card--featured h3 {
+        font-size: 1rem;
+    }
+}
+
+/* end: IN EVIDENZA */
+
+
+/* ============================================================
+   16. BLOCCO SCURO (Speciale Economia)
    ============================================================ */
 
 .home-block--dark {
