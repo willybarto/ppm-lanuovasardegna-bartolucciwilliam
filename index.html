@@ -1,18 +1,25 @@
 <!doctype html>
 <html lang="it" data-theme="light">
-
 <head>
+    <!-- =========================================================
+         01. META, SEO E RISORSE
+    ========================================================== -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>La Nuova Sardegna — Il quotidiano online della Sardegna</title>
-    <meta name="description" content="La Nuova Sardegna: notizie, cronaca, sport, politica e cultura dalla Sardegna. Il quotidiano regionale online aggiornato ogni giorno." />
+    <meta
+            name="description"
+            content="La Nuova Sardegna: notizie, cronaca, sport, politica e cultura dalla Sardegna. Il quotidiano regionale online aggiornato ogni giorno."
+    />
     <meta property="og:title" content="La Nuova Sardegna" />
-    <meta property="og:description" content="Notizie dalla Sardegna: cronaca, sport, politica, cultura e molto altro." />
+    <meta
+            property="og:description"
+            content="Notizie dalla Sardegna: cronaca, sport, politica, cultura e molto altro."
+    />
     <meta property="og:type" content="website" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <!-- Playfair Display (titoli serif) + Source Sans 3 (body sans-serif) -->
     <link
             href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Source+Sans+3:wght@300;400;500;600;700&display=swap"
             rel="stylesheet"
@@ -22,17 +29,17 @@
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
     <link rel="stylesheet" href="css/style.css" />
+    <script src="js/script.js" defer></script>
 </head>
 
 <body>
-
 <a class="skip-link" href="#main">Vai al contenuto</a>
 
 <div class="page-wrapper">
 
-    <!-- ============================================================
-         TOP BAR
-         ============================================================ -->
+    <!-- =========================================================
+         02. TOP BAR
+    ========================================================== -->
     <div class="top-bar">
         <div class="top-bar-inner">
             <div class="social-links" aria-label="Seguici sui social">
@@ -52,19 +59,21 @@
         </div>
     </div>
 
-    <!-- ============================================================
-         HEADER
-         ============================================================ -->
+    <!-- =========================================================
+         03. HEADER
+    ========================================================== -->
     <header class="site-header" role="banner">
         <div class="header-inner">
             <div class="header-top">
+                <span class="header-sfoglia">
+                    <i class="fa-regular fa-newspaper" aria-hidden="true"></i>
+                    <span>Sfoglia il quotidiano</span>
+                </span>
 
-          <span class="header-sfoglia">
-            <i class="fa-regular fa-newspaper" aria-hidden="true"></i>
-            <span>Sfoglia il quotidiano</span>
-          </span>
-
-                <h1 class="site-logo"><a href="#" aria-label="La Nuova Sardegna — Homepage">La Nuova Sardegna</a></h1>
+                <h1 class="site-logo">
+                    <span class="logo-main">LA NUOVA</span>
+                    <span class="logo-sub">Sardegna</span>
+                </h1>
 
                 <div class="header-actions">
                     <a href="#" class="accedi" aria-label="Accedi al tuo account">
@@ -73,17 +82,15 @@
                     </a>
                     <a href="#" class="abbonati">Abbonati</a>
                 </div>
-
             </div>
         </div>
     </header>
 
-    <!-- ============================================================
-         NAV PRINCIPALE
-         ============================================================ -->
+    <!-- =========================================================
+         04. NAVIGAZIONE PRINCIPALE
+    ========================================================== -->
     <nav class="main-nav" aria-label="Navigazione principale">
         <div class="nav-inner">
-
             <button
                     class="nav-hamburger"
                     type="button"
@@ -105,21 +112,33 @@
                 <li><a href="#">Economia Top1000</a></li>
             </ul>
 
+            <div class="search-overlay" id="searchOverlay">
+                <form class="search-form">
+                    <input type="search" placeholder="Cerca nel sito..." aria-label="Cerca">
+                    <button type="submit" aria-label="Esegui ricerca">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                    <button type="button" class="search-close" id="searchClose" aria-label="Chiudi ricerca">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </form>
+            </div>
+
             <button
                     class="nav-search"
                     type="button"
                     aria-label="Apri campo di ricerca"
+                    id="searchToggle"
             >
                 <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
                 <span>Cerca</span>
             </button>
-
         </div>
     </nav>
 
-    <!-- ============================================================
-         EDIZIONI
-         ============================================================ -->
+    <!-- =========================================================
+         05. BARRA EDIZIONI
+    ========================================================== -->
     <div class="edition-bar" role="navigation" aria-label="Selezione edizione locale">
         <div class="edition-inner">
             <span class="edition-label" id="edition-label">Scegli l'edizione</span>
@@ -134,12 +153,11 @@
         </div>
     </div>
 
-    <!-- ============================================================
-         VIDEO DEL GIORNO
-         ============================================================ -->
+    <!-- =========================================================
+         06. VIDEO DEL GIORNO
+    ========================================================== -->
     <section class="home-videos" aria-labelledby="video-heading">
         <div class="home-videos-inner">
-
             <header class="section-head">
                 <h2 id="video-heading">I video del giorno</h2>
                 <a href="#" class="section-more">
@@ -147,498 +165,857 @@
                 </a>
             </header>
 
-            <div class="video-grid">
-
+            <div class="video-grid" id="videoScrollerTop">
                 <article class="video-card">
                     <a href="#" aria-label="Guarda il video: Lorem ipsum dolor sit amet">
-                        <img
-                                src="https://placehold.co/420x240"
-                                alt=""
-                                width="420" height="240"
-                                loading="lazy"
-                        />
+                        <img src="https://placehold.co/420x240" alt="" width="420" height="240" loading="lazy"/>
                         <span class="video-play" aria-hidden="true">▶</span>
                     </a>
                     <p class="kicker">Sardegna</p>
                     <h3>Lorem ipsum dolor sit amet consectetur</h3>
                 </article>
-
                 <article class="video-card">
                     <a href="#" aria-label="Guarda il video: Sed do eiusmod tempor incididunt">
-                        <img
-                                src="https://placehold.co/420x240"
-                                alt=""
-                                width="420" height="240"
-                                loading="lazy"
-                        />
+                        <img src="https://placehold.co/420x240" alt="" width="420" height="240" loading="lazy"/>
                         <span class="video-play" aria-hidden="true">▶</span>
                     </a>
                     <p class="kicker">Mondo</p>
                     <h3>Sed do eiusmod tempor incididunt ut labore</h3>
                 </article>
-
                 <article class="video-card">
                     <a href="#" aria-label="Guarda il video: Ut enim ad minim veniam quis">
-                        <img
-                                src="https://placehold.co/420x240"
-                                alt=""
-                                width="420" height="240"
-                                loading="lazy"
-                        />
+                        <img src="https://placehold.co/420x240" alt="" width="420" height="240" loading="lazy"/>
                         <span class="video-play" aria-hidden="true">▶</span>
                     </a>
                     <p class="kicker">Cronaca</p>
                     <h3>Ut enim ad minim veniam quis nostrud</h3>
                 </article>
-
                 <article class="video-card">
                     <a href="#" aria-label="Guarda il video: Duis aute irure dolor in reprehenderit">
-                        <img
-                                src="https://placehold.co/420x240"
-                                alt=""
-                                width="420" height="240"
-                                loading="lazy"
-                        />
+                        <img src="https://placehold.co/420x240" alt="" width="420" height="240" loading="lazy"/>
                         <span class="video-play" aria-hidden="true">▶</span>
                     </a>
                     <p class="kicker">Sport</p>
                     <h3>Duis aute irure dolor in reprehenderit voluptate</h3>
                 </article>
-
+                <article class="video-card">
+                    <a href="#" aria-label="Guarda il video: Consectetur adipiscing elit sed do">
+                        <img src="https://placehold.co/420x240" alt="" width="420" height="240" loading="lazy"/>
+                        <span class="video-play" aria-hidden="true">▶</span>
+                    </a>
+                    <p class="kicker">Politica</p>
+                    <h3>Consectetur adipiscing elit sed do eiusmod</h3>
+                </article>
+                <article class="video-card">
+                    <a href="#" aria-label="Guarda il video: Labore et dolore magna aliqua enim">
+                        <img src="https://placehold.co/420x240" alt="" width="420" height="240" loading="lazy"/>
+                        <span class="video-play" aria-hidden="true">▶</span>
+                    </a>
+                    <p class="kicker">Economia</p>
+                    <h3>Labore et dolore magna aliqua enim ad minim</h3>
+                </article>
+                <article class="video-card">
+                    <a href="#" aria-label="Guarda il video: Nostrud exercitation ullamco laboris">
+                        <img src="https://placehold.co/420x240" alt="" width="420" height="240" loading="lazy"/>
+                        <span class="video-play" aria-hidden="true">▶</span>
+                    </a>
+                    <p class="kicker">Cultura</p>
+                    <h3>Nostrud exercitation ullamco laboris nisi</h3>
+                </article>
+                <article class="video-card">
+                    <a href="#" aria-label="Guarda il video: Aliquip ex ea commodo consequat duis">
+                        <img src="https://placehold.co/420x240" alt="" width="420" height="240" loading="lazy"/>
+                        <span class="video-play" aria-hidden="true">▶</span>
+                    </a>
+                    <p class="kicker">Ambiente</p>
+                    <h3>Aliquip ex ea commodo consequat duis aute</h3>
+                </article>
             </div>
+
+            <!-- BARRETTA INDICATORE -->
+            <div class="video-indicator-wrap">
+                <div class="video-indicator-bar" id="videoIndicator"></div>
+            </div>
+
         </div>
     </section>
 
-    <!-- ============================================================
-         MAIN
-         ============================================================ -->
+    <!-- =========================================================
+         07. MAIN CONTENT
+    ========================================================== -->
     <main class="home" id="main">
 
-        <!-- TITOLO SEZIONE PRIMO PIANO -->
+        <!-- =====================================================
+             07.1 PRIMO PIANO
+        ====================================================== -->
         <header class="section-head section-head--plain">
             <h2>Primo piano</h2>
         </header>
 
-        <!-- HERO / PRIMO PIANO -->
         <section class="home-hero" aria-labelledby="hero-heading">
-
             <article class="hero-main">
                 <a href="#" class="hero-thumb" aria-label="Leggi l'articolo in primo piano">
                     <img
                             src="https://placehold.co/900x520"
                             alt=""
-                            width="900" height="520"
+                            width="900"
+                            height="520"
                             loading="eager"
                     />
                 </a>
-                <p class="kicker">Lorem Ipsum</p>
+                <p class="kicker">LOREM IPSUM</p>
                 <h2 class="hero-title" id="hero-heading">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                    sed do eiusmod tempor incididunt ut labore
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor
                 </h2>
-                <p class="hero-byline">di Lorem Ipsum</p>
+                <p class="hero-byline">LOREM IPSUM</p>
                 <ul class="hero-links">
                     <li>
-                        <a href="#">▶ Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod</a>
-                    </li>
-                    <li>
-                        <a href="#">▶ Ut labore et dolore magna aliqua enim ad minim veniam quis nostrud exercitation</a>
+                        <a href="#">▶ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna – VIDEO</a>
                     </li>
                 </ul>
             </article>
 
             <aside class="hero-side" aria-label="Altri articoli in evidenza">
-
-                <!-- Prima notizia: con foto -->
                 <article class="side-item side-item--with-img">
                     <a href="#" class="side-item-img">
                         <img
                                 src="https://placehold.co/600x340"
                                 alt=""
-                                width="600" height="340"
+                                width="600"
+                                height="340"
                                 loading="lazy"
                         />
                     </a>
                     <div class="side-item-body">
-                        <p class="kicker">Cronaca</p>
-                        <h3><a href="#">Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt</a></h3>
+                        <p class="kicker">LOREM IPSUM</p>
+                        <h3><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit</a></h3>
                     </div>
                 </article>
 
-                <!-- Seconda notizia: solo testo -->
                 <article class="side-item">
-                    <p class="kicker">Cronaca</p>
-                    <h3><a href="#">Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip</a></h3>
+                    <p class="kicker">LOREM IPSUM</p>
+                    <h3><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</a></h3>
                 </article>
 
-                <!-- Terza notizia: solo testo -->
                 <article class="side-item">
-                    <p class="kicker">Medio Oriente</p>
-                    <h3><a href="#">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat</a></h3>
+                    <p class="kicker">LOREM IPSUM</p>
+                    <h3><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore</a></h3>
                 </article>
-
             </aside>
         </section>
 
-        <!-- TRE CARD SOTTO IL PRIMO PIANO — larghezza intera pagina -->
+        <!-- =====================================================
+             07.2 PRIMO PIANO CORRELATI
+        ====================================================== -->
         <section class="home-block hero-bottom-grid" aria-labelledby="primo-piano-correlati">
             <article class="hero-bottom-card">
-                <a href="#" aria-label="Leggi: Lorem ipsum dolor sit amet consectetur">
+                <a href="#" aria-label="Leggi articolo">
                     <img src="https://placehold.co/600x340" alt="" width="600" height="340" loading="lazy" />
                 </a>
-                <p class="kicker">Lorem</p>
-                <h3><a href="#">Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor</a></h3>
+                <p class="kicker">LOREM IPSUM</p>
+                <h3><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna</a></h3>
+                <p class="hero-byline">LOREM IPSUM</p>
             </article>
 
             <article class="hero-bottom-card">
-                <a href="#" aria-label="Leggi: Sed do eiusmod tempor incididunt ut labore">
+                <a href="#" aria-label="Leggi articolo">
                     <img src="https://placehold.co/600x340" alt="" width="600" height="340" loading="lazy" />
                 </a>
-                <p class="kicker">Ipsum</p>
-                <h3><a href="#">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua enim</a></h3>
+                <p class="kicker">LOREM IPSUM</p>
+                <h3><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore</a></h3>
+                <ul class="hero-links">
+                    <li><a href="#">▶ Lorem ipsum dolor sit amet, consectetur adipiscing elit: sed do eiusmod tempor incididunt ut labore</a></li>
+                    <li><a href="#">▶ Lorem ipsum dolor sit amet, consectetur adipiscing elit: sed do eiusmod tempor incididunt ut labore</a></li>
+                </ul>
             </article>
 
             <article class="hero-bottom-card">
-                <a href="#" aria-label="Leggi: Ut enim ad minim veniam quis nostrud exercitation">
+                <a href="#" aria-label="Leggi articolo">
                     <img src="https://placehold.co/600x340" alt="" width="600" height="340" loading="lazy" />
                 </a>
-                <p class="kicker">Dolor</p>
-                <h3><a href="#">Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi</a></h3>
+                <p class="kicker">LOREM IPSUM</p>
+                <h3><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</a></h3>
             </article>
         </section>
 
-        <!-- NETWORK SAE -->
-        <section class="network-sae" aria-labelledby="network-heading">
+        <!-- =====================================================
+             07.3 NETWORK SAE
+        ====================================================== -->
+        <section class="network-sae" aria-labelledby="network-sae-heading">
             <div class="network-inner">
-                <h2 id="network-heading" class="network-title">Network SAE</h2>
-                <ul class="network-logos" aria-label="Testate del Network SAE">
-                    <li>
-                        <a href="https://www.iltirreno.it" target="_blank" rel="noreferrer noopener" aria-label="Il Tirreno">
-                            <img src="https://api-sites-prd.saegroup.abinsula.com/uploads/Logo_Il_Tirreno_528ab52512.svg" alt="Il Tirreno" width="120" height="44" loading="lazy" />
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.lanuovasardegna.it" target="_blank" rel="noreferrer noopener" aria-label="La Nuova Sardegna">
-                            <img src="https://api-sites-prd.saegroup.abinsula.com/uploads/Logo_La_Nuova_Sardegna_ec3bcc137c.svg" alt="La Nuova Sardegna" width="120" height="44" loading="lazy" />
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.gazzettadireggio.it/" target="_blank" rel="noreferrer noopener" aria-label="Gazzetta di Reggio">
-                            <img src="https://api-sites-prd.saegroup.abinsula.com/uploads/Logo_Gazzetta_Di_Reggio_6f2fa54bd8.svg" alt="Gazzetta di Reggio" width="120" height="44" loading="lazy" />
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.gazzettadimodena.it/" target="_blank" rel="noreferrer noopener" aria-label="Gazzetta di Modena">
-                            <img src="https://api-sites-prd.saegroup.abinsula.com/uploads/Logo_Gazzetta_Di_Modena_18441059fb.svg" alt="Gazzetta di Modena" width="120" height="44" loading="lazy" />
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.lanuovaferrara.it/" target="_blank" rel="noreferrer noopener" aria-label="La Nuova Ferrara">
-                            <img src="https://api-sites-prd.saegroup.abinsula.com/uploads/Logo_La_Nuova_Ferrara_6f83b5e428.svg" alt="La Nuova Ferrara" width="120" height="44" loading="lazy" />
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://laprovinciapavese.gelocal.it" target="_blank" rel="noreferrer noopener" aria-label="La Provincia Pavese">
-                            <img src="https://api-sites-prd.saegroup.abinsula.com/uploads/Logo_La_Provincia_Pavese_b0c2fda121.svg" alt="La Provincia Pavese" width="120" height="44" loading="lazy" />
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.abruzzodaily.it/" target="_blank" rel="noreferrer noopener" aria-label="Abruzzo Daily">
-                            <img src="https://api-sites-prd.saegroup.abinsula.com/uploads/header_9ea8e75661.svg" alt="Abruzzo Daily" width="120" height="44" loading="lazy" />
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.mammemagazine.it/" target="_blank" rel="noreferrer noopener" aria-label="Mamme Magazine">
-                            <img src="https://api-sites-prd.saegroup.abinsula.com/uploads/logo_png_496f6ef80f.webp" alt="Mamme Magazine" width="120" height="44" loading="lazy" />
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://erasmag.eu/" target="_blank" rel="noreferrer noopener" aria-label="Erasmag">
-                            <img src="https://api-sites-prd.saegroup.abinsula.com/uploads/logo_web_scaled_639840e808.png" alt="Erasmag" width="120" height="44" loading="lazy" />
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://saecomics.it/" target="_blank" rel="noreferrer noopener" aria-label="SAE Comics">
-                            <img src="https://api-sites-prd.saegroup.abinsula.com/uploads/SAECOMICS_3a2fe014c6.png" alt="SAE Comics" width="120" height="44" loading="lazy" />
-                        </a>
-                    </li>
-                </ul>
+                <h2 class="network-title" id="network-sae-heading">Network SAE</h2>
+                <div class="network-strip" id="networkStrip">
+                    <div class="network-track" id="networkTrack">
+                        <a href="#" class="network-logo-card"><img src="https://placehold.co/130x36/063a74/ffffff?text=Il+Tirreno" alt="Il Tirreno"></a>
+                        <a href="#" class="network-logo-card"><img src="https://placehold.co/130x36/063a74/ffffff?text=La+Nuova+Sardegna" alt="La Nuova Sardegna"></a>
+                        <a href="#" class="network-logo-card"><img src="https://placehold.co/130x36/063a74/ffffff?text=Gazzetta+di+Reggio" alt="Gazzetta di Reggio"></a>
+                        <a href="#" class="network-logo-card"><img src="https://placehold.co/130x36/063a74/ffffff?text=Gazzetta+di+Modena" alt="Gazzetta di Modena"></a>
+                        <a href="#" class="network-logo-card"><img src="https://placehold.co/130x36/063a74/ffffff?text=La+Nuova+Ferrara" alt="La Nuova Ferrara"></a>
+                        <a href="#" class="network-logo-card"><img src="https://placehold.co/130x36/063a74/ffffff?text=La+Provincia+Pavese" alt="La Provincia Pavese"></a>
+                        <a href="#" class="network-logo-card"><img src="https://placehold.co/130x36/063a74/ffffff?text=Abruzzo+Daily" alt="Abruzzo Daily"></a>
+                        <a href="#" class="network-logo-card"><img src="https://placehold.co/130x36/063a74/ffffff?text=Mamme+Magazine" alt="Mamme Magazine"></a>
+                        <a href="#" class="network-logo-card"><img src="https://placehold.co/130x36/063a74/ffffff?text=Erasmag" alt="Erasmag"></a>
+                        <a href="#" class="network-logo-card"><img src="https://placehold.co/130x36/063a74/ffffff?text=SAE+Comics" alt="SAE Comics"></a>
+                        <a href="#" class="network-logo-card"><img src="https://placehold.co/130x36/063a74/ffffff?text=Il+Tirreno" alt="Il Tirreno 2"></a>
+                        <a href="#" class="network-logo-card"><img src="https://placehold.co/130x36/063a74/ffffff?text=La+Nuova" alt="La Nuova 2"></a>
+                    </div>
+                </div>
+                <!-- BARRETTA INDICATORE -->
+                <div class="network-indicator-wrap">
+                    <div class="network-indicator-bar" id="networkIndicator"></div>
+                </div>
             </div>
         </section>
 
-        <!-- ============================================================
-             IN EVIDENZA — Layout 2 colonne: main grid + sidebar Cultura
-             Basato sul layout del sito La Nuova Sardegna (screenshot professore)
-             ============================================================ -->
+        <!-- =====================================================
+             07.4 IN EVIDENZA
+        ====================================================== -->
         <section class="in-evidenza-wrapper" aria-labelledby="evidenza-main-heading">
-
-            <!-- COLONNA SX — Griglia articoli "In evidenza" -->
             <div class="in-evidenza-main">
-
                 <header class="section-head">
                     <h2 id="evidenza-main-heading">In evidenza</h2>
                 </header>
 
-                <!-- Articolo grande in cima con immagine full-width -->
                 <article class="ev-card ev-card--featured">
-                    <a href="#" class="ev-card-img" aria-label="Leggi: Federica Pellegrini e Matteo Giunta: è nata la seconda figlia Rachele">
-                        <img src="https://placehold.co/720x405" alt="" width="720" height="405" loading="lazy" />
+                    <a href="#" class="ev-card-img" aria-label="Leggi articolo in evidenza">
+                        <img src="https://placehold.co/360x200" alt="" width="360" height="200" loading="lazy" />
                     </a>
-                    <p class="kicker">Fiocco rosa</p>
-                    <h3><a href="#">Federica Pellegrini e Matteo Giunta: è nata la seconda figlia Rachele</a></h3>
+                    <div class="ev-card-body">
+                        <p class="kicker">LOREM IPSUM</p>
+                        <h3><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</a></h3>
+                    </div>
                 </article>
 
-                <!-- Riga 2: due card affiancate con immagine -->
                 <div class="ev-row ev-row--2col">
-
                     <article class="ev-card">
-                        <a href="#" class="ev-card-img" aria-label="Leggi: Gesto razzista in un bar di Rio de Janeiro">
+                        <a href="#" class="ev-card-img">
                             <img src="https://placehold.co/360x200" alt="" width="360" height="200" loading="lazy" />
                         </a>
-                        <p class="kicker">Mondo</p>
-                        <h3><a href="#">Gesto razzista in un bar di Rio de Janeiro, una turista rischia cinque anni di carcere: cosa è successo</a></h3>
-                    </article>
-
-                    <article class="ev-card">
-                        <a href="#" class="ev-card-img" aria-label="Leggi: Gmail, ora si può cambiare indirizzo senza perdere l'archivio delle email">
-                            <img src="https://placehold.co/360x200" alt="" width="360" height="200" loading="lazy" />
-                        </a>
-                        <p class="kicker">Tecnologia</p>
-                        <h3><a href="#">Gmail, ora si può cambiare indirizzo senza perdere l'archivio delle email: svolta dopo oltre 20 anni</a></h3>
-                    </article>
-
-                </div>
-
-                <!-- Riga 3: card immagine + card solo testo con bullet list -->
-                <div class="ev-row ev-row--2col">
-
-                    <article class="ev-card">
-                        <a href="#" class="ev-card-img" aria-label="Leggi: Cattiva conservazione dei prodotti, chiuso un ristorante">
-                            <img src="https://placehold.co/360x200" alt="" width="360" height="200" loading="lazy" />
-                        </a>
-                        <p class="kicker">Cronaca</p>
-                        <h3><a href="#">Cattiva conservazione dei prodotti, chiuso un ristorante in centro e maxi sequestro di un quintale di pesce: ecco dove</a></h3>
-                    </article>
-
-                    <article class="ev-card ev-card--text-list">
-                        <p class="kicker">L'oro rosso</p>
-                        <h3><a href="#">Tentano di rubare il rame: arrestati due uomini</a></h3>
+                        <p class="kicker">LOREM IPSUM</p>
+                        <h3><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna – Video</a></h3>
                         <ul class="ev-bullets">
-                            <li><a href="#">I furti dell'oro rosso sono in aumento: ecco perché il rame va letteralmente a ruba</a></li>
-                            <li><a href="#">Ottanta chili di rame in un passeggino, l'oro rosso prelevato dal palazzo della Soprintendenza: due arresti</a></li>
-                            <li><a href="#">Precipita dal traliccio e muore: voleva rubare il rame — La ricostruzione</a></li>
-                        </ul>
-                    </article>
-
-                </div>
-
-                <!-- Riga 4: due card affiancate con immagine -->
-                <div class="ev-row ev-row--2col">
-
-                    <article class="ev-card">
-                        <a href="#" class="ev-card-img" aria-label="Leggi: Ho una relazione con Piantedosi">
-                            <img src="https://placehold.co/360x200" alt="" width="360" height="200" loading="lazy" />
-                        </a>
-                        <p class="kicker">Il ritratto</p>
-                        <h3><a href="#">«Ho una relazione con Piantedosi»: ecco chi è Claudia Conte tra cerimonie, eventi e ospitate tv</a></h3>
-                        <ul class="ev-bullets">
-                            <li><a href="#">Piantedosi come Sangiuliano, Claudia Conte: «Una relazione col ministro? Non posso negarla»</a></li>
+                            <li><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit: sed do eiusmod tempor – VIDEO</a></li>
                         </ul>
                     </article>
 
                     <article class="ev-card">
-                        <a href="#" class="ev-card-img" aria-label="Leggi: Da Sassari a Cagliari, i nomi delle città sarde">
+                        <a href="#" class="ev-card-img">
                             <img src="https://placehold.co/360x200" alt="" width="360" height="200" loading="lazy" />
                         </a>
-                        <p class="kicker">Lingua e storia</p>
-                        <h3><a href="#">Da Sassari a Cagliari, i nomi delle città sarde nascondono storie sorprendenti: ecco cosa significano davvero</a></h3>
-                        <p class="ev-byline">di Massimo Secchi</p>
+                        <p class="kicker">LOREM IPSUM</p>
+                        <h3><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</a></h3>
+                        <p class="ev-byline">LOREM IPSUM</p>
                     </article>
-
                 </div>
 
-            </div><!-- /in-evidenza-main -->
+                <div class="ev-row ev-row--2col">
+                    <article class="ev-card">
+                        <a href="#" class="ev-card-img">
+                            <img src="https://placehold.co/360x200" alt="" width="360" height="200" loading="lazy" />
+                        </a>
+                        <p class="kicker">LOREM IPSUM</p>
+                        <h3><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore</a></h3>
+                        <p class="ev-byline">LOREM IPSUM</p>
+                        <ul class="ev-bullets">
+                            <li><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit: sed do eiusmod tempor incididunt ut labore</a></li>
+                        </ul>
+                    </article>
 
-            <!-- COLONNA DX — Sidebar "Cultura e Spettacoli" -->
+                    <article class="ev-card">
+                        <a href="#" class="ev-card-img">
+                            <img src="https://placehold.co/360x200" alt="" width="360" height="200" loading="lazy" />
+                        </a>
+                        <p class="kicker">LOREM IPSUM</p>
+                        <h3><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore</a></h3>
+                    </article>
+                </div>
+
+                <div class="ev-row ev-row--2col">
+                    <article class="ev-card">
+                        <a href="#" class="ev-card-img">
+                            <img src="https://placehold.co/360x200" alt="" width="360" height="200" loading="lazy" />
+                        </a>
+                        <p class="kicker">LOREM IPSUM</p>
+                        <h3><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</a></h3>
+                        <p class="ev-byline">LOREM IPSUM</p>
+                    </article>
+
+                    <article class="ev-card">
+                        <a href="#" class="ev-card-img">
+                            <img src="https://placehold.co/360x200" alt="" width="360" height="200" loading="lazy" />
+                        </a>
+                        <p class="kicker">LOREM IPSUM</p>
+                        <h3><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore</a></h3>
+                        <p class="ev-byline">LOREM IPSUM</p>
+                    </article>
+                </div>
+            </div>
+
             <aside class="in-evidenza-sidebar" aria-labelledby="sidebar-cultura-heading">
-
                 <header class="sidebar-head">
                     <h2 id="sidebar-cultura-heading">Cultura e Spettacoli</h2>
                 </header>
 
-                <article class="sidebar-card">
-                    <a href="#" class="sidebar-card-img" aria-label="Leggi: Tutti i Giganti di Mont'e Prama tornano a casa">
+                <article class="sidebar-card tribunale">
+                    <a href="#" class="sidebar-card-img">
                         <img src="https://placehold.co/380x220" alt="" width="380" height="220" loading="lazy" />
                     </a>
-                    <p class="kicker">Cabras</p>
-                    <h3><a href="#">Tutti i Giganti di Mont'e Prama tornano a casa, la collezione riunita: ecco come sarà la nuova esposizione</a></h3>
-                    <p class="ev-byline">di Paolo Cannedda</p>
+                    <p class="kicker">TRIBUNALE</p>
+                    <h3><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore</a></h3>
                 </article>
 
                 <article class="sidebar-card">
-                    <a href="#" class="sidebar-card-img" aria-label="Leggi: A Olbia il concerto di Romany Gilmour">
+                    <a href="#" class="sidebar-card-img">
                         <img src="https://placehold.co/380x220" alt="" width="380" height="220" loading="lazy" />
                     </a>
-                    <p class="kicker">Eventi</p>
-                    <h3><a href="#">A Olbia il concerto di Romany Gilmour: è la figlia del chitarrista dei Pink Floyd</a></h3>
+                    <p class="kicker">LOREM IPSUM</p>
+                    <h3><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna</a></h3>
                 </article>
 
                 <article class="sidebar-card">
-                    <a href="#" class="sidebar-card-img" aria-label="Leggi: I sardi hanno il Dna più antico d'Europa">
+                    <a href="#" class="sidebar-card-img">
                         <img src="https://placehold.co/380x220" alt="" width="380" height="220" loading="lazy" />
                     </a>
-                    <p class="kicker">La ricerca</p>
-                    <h3><a href="#">I sardi hanno il Dna più antico d'Europa: «Custodiscono un'eredità genetica di 10mila anni fa»</a></h3>
-                    <p class="ev-byline">di Massimo Secchi</p>
+                    <p class="kicker">LOREM IPSUM</p>
+                    <h3><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore</a></h3>
                 </article>
 
                 <a href="#" class="sidebar-cta" aria-label="Vedi tutti gli articoli di Cultura e Spettacoli">TUTTI GLI ARTICOLI</a>
 
-                <!-- Spazio pubblicitario -->
                 <div class="sidebar-ad" aria-label="Pubblicità" role="complementary">
                     <span class="sidebar-ad-label">Pubblicità</span>
                     <div class="sidebar-ad-placeholder">ADV</div>
                 </div>
+            </aside>
+        </section>
 
-            </aside><!-- /in-evidenza-sidebar -->
+        <!-- =====================================================
+             07.5 SPECIALE SCUOLA
+        ====================================================== -->
+        <section class="special-feature" aria-labelledby="special-feature-heading">
+            <div class="special-feature__logo">
+                <img
+                        src="https://placehold.co/900x170?text=La+Nuova+%40+Scuola"
+                        alt="La Nuova @ Scuola"
+                        width="900"
+                        height="170"
+                        loading="lazy"
+                />
+            </div>
 
-        </section><!-- /in-evidenza-wrapper -->
-
-        <!-- ITALIA-MONDO -->
-        <section class="home-block" aria-labelledby="mondo-heading">
-            <header class="section-head section-head--accent">
-                <h2 id="mondo-heading">Italia-Mondo</h2>
-                <a href="#" class="section-more">
-                    Vedi tutti <span class="sr-only">gli articoli di Italia e Mondo</span>
-                </a>
-            </header>
-            <div class="card-grid">
-
-                <article class="news-card">
-                    <a href="#" class="card-img-link" aria-label="Leggi: Nemo enim ipsam voluptatem quia voluptas sit aspernatur">
-                        <img src="https://placehold.co/520x320" alt="" width="520" height="320" loading="lazy" />
-                    </a>
-                    <p class="kicker">Europa</p>
-                    <h3><a href="#">Nemo enim ipsam voluptatem quia voluptas sit aspernatur</a></h3>
-                </article>
-
-                <article class="news-card">
-                    <a href="#" class="card-img-link" aria-label="Leggi: Neque porro quisquam est qui dolorem ipsum quia">
-                        <img src="https://placehold.co/520x320" alt="" width="520" height="320" loading="lazy" />
-                    </a>
-                    <p class="kicker">Politica</p>
-                    <h3><a href="#">Neque porro quisquam est qui dolorem ipsum quia</a></h3>
-                </article>
-
-                <article class="news-card">
-                    <a href="#" class="card-img-link" aria-label="Leggi: Ut labore et dolore magnam aliquam quaerat voluptatem">
-                        <img src="https://placehold.co/520x320" alt="" width="520" height="320" loading="lazy" />
-                    </a>
-                    <p class="kicker">Cronaca</p>
-                    <h3><a href="#">Ut labore et dolore magnam aliquam quaerat voluptatem</a></h3>
-                </article>
-
-                <article class="news-card">
-                    <a href="#" class="card-img-link" aria-label="Leggi: Quis autem vel eum iure reprehenderit qui in ea">
-                        <img src="https://placehold.co/520x320" alt="" width="520" height="320" loading="lazy" />
-                    </a>
-                    <p class="kicker">Medio Oriente</p>
-                    <h3><a href="#">Quis autem vel eum iure reprehenderit qui in ea</a></h3>
-                </article>
-
+            <div class="special-feature__cta-wrap">
+                <a href="#" class="special-feature__cta" id="special-feature-heading">Vai allo speciale</a>
             </div>
         </section>
 
-        <!-- SPECIALE ECONOMIA -->
-        <section class="home-block home-block--dark" aria-labelledby="economia-heading">
-            <header class="section-head">
-                <h2 id="economia-heading">Speciale Economia &amp; Top1000</h2>
-                <a href="#" class="section-more">
-                    Vedi tutti <span class="sr-only">gli articoli di economia</span>
-                </a>
+        <!-- =====================================================
+             07.6 SPORT (griglia come le special; titolo come Italia-Mondo)
+        ====================================================== -->
+        <section class="home-block sport-section" aria-labelledby="sport-heading">
+            <header class="section-head section-head--plain">
+                <h2 id="sport-heading">Sport</h2>
             </header>
-            <div class="card-grid">
 
-                <article class="news-card">
-                    <a href="#" class="card-img-link" aria-label="Leggi: At vero eos et accusamus et iusto odio dignissimos">
-                        <img src="https://placehold.co/520x320" alt="" width="520" height="320" loading="lazy" />
+            <div class="special-split__grid">
+                <article class="special-split__main">
+                    <a href="#" aria-label="Leggi articolo in evidenza: Sport">
+                        <img src="https://placehold.co/780x620" alt="" width="780" height="620" loading="lazy">
                     </a>
-                    <p class="kicker">Finanza</p>
-                    <h3><a href="#">At vero eos et accusamus et iusto odio dignissimos ducimus blanditiis</a></h3>
+                    <p class="kicker">Sport</p>
+                    <h3><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</a></h3>
                 </article>
 
-                <article class="news-card">
-                    <a href="#" class="card-img-link" aria-label="Leggi: Nam libero tempore cum soluta nobis eligendi optio">
-                        <img src="https://placehold.co/520x320" alt="" width="520" height="320" loading="lazy" />
-                    </a>
-                    <p class="kicker">Lavoro</p>
-                    <h3><a href="#">Nam libero tempore cum soluta nobis eligendi optio cumque nihil</a></h3>
+                <div class="special-split__side">
+                    <article class="special-split__item">
+                        <a href="#" aria-label="Leggi articolo: Tennis">
+                            <img src="https://placehold.co/300x180" alt="" width="300" height="180" loading="lazy">
+                        </a>
+                        <div>
+                            <p class="kicker">Tennis</p>
+                            <h4><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</a></h4>
+                        </div>
+                    </article>
+
+                    <article class="special-split__item">
+                        <a href="#" aria-label="Leggi articolo: Tennis">
+                            <img src="https://placehold.co/300x180" alt="" width="300" height="180" loading="lazy">
+                        </a>
+                        <div>
+                            <p class="kicker">Tennis</p>
+                            <h4><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</a></h4>
+                        </div>
+                    </article>
+
+                    <article class="special-split__item">
+                        <a href="#" aria-label="Leggi articolo: Calcio">
+                            <img src="https://placehold.co/300x180" alt="" width="300" height="180" loading="lazy">
+                        </a>
+                        <div>
+                            <p class="kicker">Calcio</p>
+                            <h4><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</a></h4>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+            <div class="italia-mondo-footer">
+                <a href="#" class="sport-all-link">TUTTI GLI ARTICOLI ➝</a>
+            </div>
+        </section>
+
+        <!-- =====================================================
+             07.7 ITALIA-MONDO
+        ====================================================== -->
+        <section class="home-block italia-mondo-section" aria-labelledby="mondo-heading">
+            <header class="section-head section-head--plain">
+                <h2 id="mondo-heading">Italia-Mondo</h2>
+            </header>
+
+            <div class="italia-mondo-grid">
+                <article class="italia-mondo-card">
+                    <a href="#"><img src="https://placehold.co/520x320" alt="" width="520" height="320" loading="lazy"></a>
+                    <p class="kicker">LOREM IPSUM</p>
+                    <h3><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</a></h3>
                 </article>
 
-                <article class="news-card">
-                    <a href="#" class="card-img-link" aria-label="Leggi: Temporibus autem quibusdam officiis debitis rerum">
-                        <img src="https://placehold.co/520x320" alt="" width="520" height="320" loading="lazy" />
-                    </a>
-                    <p class="kicker">Imprese</p>
-                    <h3><a href="#">Temporibus autem quibusdam officiis debitis rerum necessitatibus</a></h3>
+                <article class="italia-mondo-card">
+                    <a href="#"><img src="https://placehold.co/520x320" alt="" width="520" height="320" loading="lazy"></a>
+                    <p class="kicker">LOREM IPSUM</p>
+                    <h3><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</a></h3>
                 </article>
 
-                <article class="news-card">
-                    <a href="#" class="card-img-link" aria-label="Leggi: Itaque earum rerum hic tenetur a sapiente delectus">
-                        <img src="https://placehold.co/520x320" alt="" width="520" height="320" loading="lazy" />
-                    </a>
-                    <p class="kicker">Mercati</p>
-                    <h3><a href="#">Itaque earum rerum hic tenetur a sapiente delectus reiciendis</a></h3>
+                <article class="italia-mondo-card">
+                    <a href="#"><img src="https://placehold.co/520x320" alt="" width="520" height="320" loading="lazy"></a>
+                    <p class="kicker">LOREM IPSUM</p>
+                    <h3><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</a></h3>
                 </article>
 
+                <article class="italia-mondo-card">
+                    <a href="#"><img src="https://placehold.co/520x320" alt="" width="520" height="320" loading="lazy"></a>
+                    <p class="kicker">LOREM IPSUM</p>
+                    <h3><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</a></h3>
+                </article>
+
+                <article class="italia-mondo-card">
+                    <a href="#"><img src="https://placehold.co/520x320" alt="" width="520" height="320" loading="lazy"></a>
+                    <p class="kicker">LOREM IPSUM</p>
+                    <h3><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</a></h3>
+                </article>
+
+                <article class="italia-mondo-card">
+                    <a href="#"><img src="https://placehold.co/520x320" alt="" width="520" height="320" loading="lazy"></a>
+                    <p class="kicker">LOREM IPSUM</p>
+                    <h3><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</a></h3>
+                </article>
+            </div>
+
+            <div class="italia-mondo-footer">
+                <a href="#" class="mondo-more-link">Altre notizie dall'Italia e dal mondo →</a>
+            </div>
+        </section>
+
+        <!-- =====================================================
+             07.8 SPECIALE ECONOMIA
+        ====================================================== -->
+        <section class="special-split economia-section" aria-labelledby="economia-top-title">
+            <header class="special-split__head">
+                <span class="special-split__eyebrow">Speciale Economia</span>
+                <h2 class="special-split__title" id="economia-top-title">ECONOMIA-TOP1000</h2>
+            </header>
+
+            <div class="special-split__grid">
+                <article class="special-split__main">
+                    <a href="#"><img src="https://placehold.co/780x620" alt="" width="780" height="620" loading="lazy"></a>
+                    <p class="kicker">LOREM IPSUM</p>
+                    <h3><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit: sed do eiusmod tempor</a></h3>
+                </article>
+
+                <div class="special-split__side">
+                    <article class="special-split__item">
+                        <a href="#"><img src="https://placehold.co/300x180" alt="" width="300" height="180" loading="lazy"></a>
+                        <div>
+                             <p class="kicker">LOREM IPSUM</p>
+                             <h4><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</a></h4>
+                        </div>
+                    </article>
+
+                    <article class="special-split__item">
+                        <a href="#"><img src="https://placehold.co/300x180" alt="" width="300" height="180" loading="lazy"></a>
+                        <div>
+                             <p class="kicker">LOREM IPSUM</p>
+                             <h4><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</a></h4>
+                        </div>
+                    </article>
+
+                    <article class="special-split__item">
+                        <a href="#"><img src="https://placehold.co/300x180" alt="" width="300" height="180" loading="lazy"></a>
+                        <div>
+                             <p class="kicker">LOREM IPSUM</p>
+                             <h4><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</a></h4>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================
+             07.9 ULTIMI VIDEO
+        ====================================================== -->
+        <section class="latest-videos" aria-labelledby="ultimi-video-title">
+            <header class="latest-videos__header">
+                <span class="latest-videos__icon-badge" aria-hidden="true">
+                    <i class="fa-solid fa-video"></i>
+                </span>
+                <h2 class="latest-videos__title" id="ultimi-video-title">Ultimi Video</h2>
+            </header>
+
+            <div class="latest-videos__scroller-container">
+                <div class="latest-videos__scroller" id="videoScrollerBottom">
+                    <article class="latest-videos__card">
+                        <a href="#"><img src="https://placehold.co/360x220" alt="" width="360" height="220" loading="lazy"></a>
+                        <p class="kicker">LOREM IPSUM</p>
+                        <h3><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</a></h3>
+                    </article>
+
+                    <article class="latest-videos__card">
+                        <a href="#"><img src="https://placehold.co/360x220" alt="" width="360" height="220" loading="lazy"></a>
+                        <p class="kicker">LOREM IPSUM</p>
+                        <h3><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</a></h3>
+                    </article>
+
+                    <article class="latest-videos__card">
+                        <a href="#"><img src="https://placehold.co/360x220" alt="" width="360" height="220" loading="lazy"></a>
+                        <p class="kicker">LOREM IPSUM</p>
+                        <h3><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</a></h3>
+                    </article>
+
+                    <article class="latest-videos__card">
+                        <a href="#"><img src="https://placehold.co/360x220" alt="" width="360" height="220" loading="lazy"></a>
+                        <p class="kicker">LOREM IPSUM</p>
+                        <h3><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</a></h3>
+                    </article>
+
+                    <article class="latest-videos__card">
+                        <a href="#"><img src="https://placehold.co/360x220" alt="" width="360" height="220" loading="lazy"></a>
+                        <p class="kicker">LOREM IPSUM</p>
+                        <h3><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</a></h3>
+                    </article>
+
+                    <article class="latest-videos__card">
+                        <a href="#"><img src="https://placehold.co/360x220" alt="" width="360" height="220" loading="lazy"></a>
+                        <p class="kicker">LOREM IPSUM</p>
+                        <h3><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</a></h3>
+                    </article>
+                </div>
+
+                <div
+                        class="latest-videos__indicator-wrap"
+                        id="latestVideosIndicatorWrap"
+                        aria-label="Clicca per spostarti lungo l'elenco video"
+                >
+                    <div class="latest-videos__indicator-track">
+                        <div class="latest-videos__indicator-bar" id="videoIndicatorBottom"></div>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="latest-videos__footer">
+                <a href="#" class="latest-videos__all">
+                    VEDI TUTTI &gt;
+                </a>
+            </footer>
+        </section>
+
+        <!-- =====================================================
+             07.10 BUONGUSTO
+        ====================================================== -->
+        <section class="special-split" aria-labelledby="buongusto-title">
+            <header class="special-split__head">
+                <span class="special-split__eyebrow">Speciale Enogastronomia</span>
+                <h2 class="special-split__title" id="buongusto-title">BUONGUSTO</h2>
+            </header>
+
+            <div class="special-split__grid">
+                <article class="special-split__main">
+                    <a href="#"><img src="https://placehold.co/780x620" alt="" width="780" height="620" loading="lazy"></a>
+                    <p class="kicker">LOREM IPSUM</p>
+                    <h3><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna</a></h3>
+                </article>
+
+                <div class="special-split__side">
+                    <article class="special-split__item">
+                        <a href="#"><img src="https://placehold.co/300x180" alt="" width="300" height="180" loading="lazy"></a>
+                        <div>
+                            <p class="kicker">LOREM IPSUM</p>
+                            <h4><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</a></h4>
+                        </div>
+                    </article>
+
+                    <article class="special-split__item">
+                        <a href="#"><img src="https://placehold.co/300x180" alt="" width="300" height="180" loading="lazy"></a>
+                        <div>
+                            <p class="kicker">LOREM IPSUM</p>
+                            <h4><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</a></h4>
+                        </div>
+                    </article>
+
+                    <article class="special-split__item">
+                        <a href="#"><img src="https://placehold.co/300x180" alt="" width="300" height="180" loading="lazy"></a>
+                        <div>
+                            <p class="kicker">LOREM IPSUM</p>
+                            <h4><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</a></h4>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+        <!-- =====================================================
+             07.11 LE NOSTRE INIZIATIVE
+        ====================================================== -->
+        <section class="iniziative-feature" aria-labelledby="iniziative-feature-heading">
+            <header class="iniziative-feature__head">
+                <h2 id="iniziative-feature-heading">Le nostre iniziative</h2>
+            </header>
+
+            <div class="iniziative-feature__grid">
+                <article class="iniziative-feature__card">
+                    <a href="#" class="iniziative-feature__media" aria-label="Vai allo speciale Arcipelago Sardegna">
+                        <img src="https://placehold.co/320x180" alt="" width="320" height="180" loading="lazy" />
+                    </a>
+                    <p class="kicker">Speciale</p>
+                    <h3 class="iniziative-feature__title">
+                        <a href="#">Arcipelago Sardegna</a>
+                    </h3>
+                </article>
+
+                <article class="iniziative-feature__card">
+                    <a href="#" class="iniziative-feature__media" aria-label="Vai allo speciale Una città e le sue storie">
+                        <img src="https://placehold.co/320x180" alt="" width="320" height="180" loading="lazy" />
+                    </a>
+                    <p class="kicker">Speciale</p>
+                    <h3 class="iniziative-feature__title">
+                        <a href="#">Una città e le sue storie</a>
+                    </h3>
+                </article>
+            </div>
+        </section>
+        <!-- =====================================================
+     07.12 STORIE E PERSONAGGI
+====================================================== -->
+        <div class="storie-outer-wrapper">
+
+            <section class="special-split storie-section" aria-labelledby="storie-title">
+                <header class="special-split__head">
+                    <span class="special-split__eyebrow">A tu per tu - La mia Sardegna - Le interviste</span>
+                    <h2 class="special-split__title" id="storie-title">STORIEPERSONAGGI</h2>
+                </header>
+
+                <div class="special-split__grid">
+
+                    <!-- Articolo principale grande -->
+                    <article class="special-split__main">
+                        <a href="#"><img src="https://placehold.co/780x620" alt="" width="780" height="620" loading="lazy"></a>
+                        <p class="kicker">La mia Sardegna</p>
+                        <h3><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit</a></h3>
+                        <p class="storie-byline">di Lorem Ipsum</p>
+                    </article>
+
+                    <!-- Colonna destra: 1 con foto + 1 solo testo -->
+                    <div class="special-split__side">
+
+                        <article class="special-split__item storie-item--stacked">
+                            <a href="#"><img src="https://placehold.co/300x180" alt="" width="300" height="180" loading="lazy"></a>
+                            <div>
+                                <p class="kicker">La mia Sardegna</p>
+                                <h4><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</a></h4>
+                                <p class="storie-byline">di Lorem Ipsum</p>
+                            </div>
+                        </article>
+
+                        <!-- Articolo senza foto -->
+                        <article class="special-split__item storie-item--stacked">
+                            <div>
+                                <p class="kicker">La mia Sardegna</p>
+                                <h4><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore</a></h4>
+                                <p class="storie-byline">di Lorem Ipsum</p>
+                            </div>
+                        </article>
+
+                    </div>
+                </div>
+
+                <!-- ===== Scroller rubriche/canali ===== -->
+                <div class="storie-channels">
+                    <div class="storie-channels__scroller" id="storieChannelsScroller">
+
+                        <article class="storie-channel-card">
+                            <a href="#" aria-label="Vai a Tutto Torres">
+                                <img src="https://placehold.co/180x120/8B1A1A/ffffff?text=TORRES" alt="Torres" width="180" height="120" loading="lazy">
+                            </a>
+                            <p class="kicker">Calcio</p>
+                            <h4><a href="#">Tutto Torres</a></h4>
+                        </article>
+
+                        <article class="storie-channel-card">
+                            <a href="#" aria-label="Vai a Radio Uni Sassari">
+                                <img src="https://placehold.co/180x120/5C1A2E/ffffff?text=Radio+Uni+Sassari" alt="Radio Uni Sassari" width="180" height="120" loading="lazy">
+                            </a>
+                            <p class="kicker">Podcast</p>
+                            <h4><a href="#">Radio Uni Sassari</a></h4>
+                        </article>
+
+                        <article class="storie-channel-card">
+                            <a href="#" aria-label="Vai a Tutto Dinamo">
+                                <img src="https://placehold.co/180x120/003366/ffffff?text=DINAMO+SASSARI" alt="Dinamo Sassari" width="180" height="120" loading="lazy">
+                            </a>
+                            <p class="kicker">Basket</p>
+                            <h4><a href="#">Tutto Dinamo</a></h4>
+                        </article>
+
+
+                    </div>
+                    <!-- Barretta indicatore -->
+                    <div class="storie-channels__indicator-wrap" id="storieChannelsIndicatorWrap">
+                        <div class="storie-channels__indicator-track">
+                            <div class="storie-channels__indicator-bar" id="storieChannelsIndicator"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- ===== Sidebar: Top news Italpress + Ultim'ora Adnkronos ===== -->
+            <aside class="storie-news-sidebar" aria-label="Notizie in breve">
+
+                <div class="storie-news-block">
+                    <h3 class="storie-news-title">Top news Italpress</h3>
+                    <ul class="storie-news-list">
+                        <li><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</a></li>
+                        <li><a href="#">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque</a></li>
+                        <li><a href="#">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit sed</a></li>
+                    </ul>
+                </div>
+
+                <div class="storie-news-block">
+                    <h3 class="storie-news-title">Ultim'ora Adnkronos</h3>
+                    <ul class="storie-news-list">
+                        <li><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</a></li>
+                        <li><a href="#">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque</a></li>
+                        <li><a href="#">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit sed consequuntur</a></li>
+                    </ul>
+                </div>
+
+            </aside>
+
+        </div>
+
+        <!-- =====================================================
+             07.13 SANI E BELLI
+        ====================================================== -->
+        <section class="sani-belli" aria-labelledby="sani-belli-title">
+            <header class="sani-belli__head">
+                <span class="sani-belli__eyebrow">SANI E BELLI - LO SPECIALE</span>
+                <h2 class="sani-belli__logo" id="sani-belli-title">SANI<span>E</span>BELLI</h2>
+            </header>
+
+            <div class="sani-belli__grid">
+                <article class="sani-belli__card">
+                    <a href="#" class="sani-belli__media">
+                        <img src="https://placehold.co/460x280" alt="" width="460" height="280" loading="lazy" />
+                    </a>
+                    <p class="kicker">Lorem ipsum</p>
+                    <h3 class="sani-belli__title"><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod</a></h3>
+                    <p class="sani-belli__byline">di Lorem Ipsum</p>
+                </article>
+
+                <article class="sani-belli__card">
+                    <a href="#" class="sani-belli__media">
+                        <img src="https://placehold.co/460x280" alt="" width="460" height="280" loading="lazy" />
+                    </a>
+                    <p class="kicker">Lorem ipsum</p>
+                    <h3 class="sani-belli__title"><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore</a></h3>
+                    <p class="sani-belli__byline">di Lorem Ipsum</p>
+                </article>
+
+                <article class="sani-belli__card">
+                    <a href="#" class="sani-belli__media">
+                        <img src="https://placehold.co/460x280" alt="" width="460" height="280" loading="lazy" />
+                    </a>
+                    <p class="kicker">Lorem ipsum</p>
+                    <h3 class="sani-belli__title"><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod</a></h3>
+                    <p class="sani-belli__byline">di Lorem Ipsum</p>
+                </article>
             </div>
         </section>
 
     </main>
 
-    <!-- ============================================================
-         FOOTER
-         ============================================================ -->
+    <!-- =========================================================
+         08. FOOTER
+    ========================================================== -->
     <footer class="site-footer" role="contentinfo">
-        <div class="footer-inner">
 
-            <div class="footer-logo">La Nuova Sardegna</div>
+        <!-- Footer Top: Logo + Social + Nav links -->
+        <div class="footer-upper">
+            <div class="footer-upper-inner">
+                <div class="footer-brand-row">
+                    <img
+                            src="https://placehold.co/280x80?text=La+Nuova+Sardegna"
+                            alt="La Nuova Sardegna"
+                            class="footer-logo-img"
+                            width="280"
+                            height="80"
+                    >
+                    <div class="footer-social" aria-label="Seguici sui social">
+                        <a href="#" aria-label="Seguici su Facebook">
+                            <i class="fa-brands fa-facebook" aria-hidden="true"></i>
+                        </a>
+                        <a href="#" aria-label="Seguici su X">
+                            <i class="fa-brands fa-x-twitter" aria-hidden="true"></i>
+                        </a>
+                        <a href="#" aria-label="Seguici su Instagram">
+                            <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+                        </a>
+                        <a href="#" aria-label="Seguici su Whatsapp">
+                            <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
 
-            <nav class="footer-nav" aria-label="Link utili nel footer">
-                <ul>
-                    <li><a href="#">Redazione</a></li>
-                    <li><a href="#">Scrivici</a></li>
-                    <li><a href="#">Abbonati</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Cookie Policy</a></li>
-                </ul>
-            </nav>
-
-            <div class="footer-social" aria-label="Seguici sui social">
-                <a href="#" aria-label="Seguici su Facebook">
-                    <i class="fa-brands fa-facebook" aria-hidden="true"></i>
-                </a>
-                <a href="#" aria-label="Seguici su X">
-                    <i class="fa-brands fa-x-twitter" aria-hidden="true"></i>
-                </a>
-                <a href="#" aria-label="Seguici su Instagram">
-                    <i class="fa-brands fa-instagram" aria-hidden="true"></i>
-                </a>
-                <a href="#" aria-label="Seguici su Whatsapp">
-                    <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
-                </a>
+                <nav class="footer-nav-links" aria-label="Link footer">
+                    <a href="#">Redazione</a>
+                    <a href="#">Scriveteci</a>
+                    <a href="#">Pubblicità</a>
+                    <a href="#">Privacy</a>
+                    <a href="#">Codice Etico e Modello 231</a>
+                    <a href="#">Cookie policy</a>
+                    <a href="#">Termini e condizioni</a>
+                </nav>
             </div>
-
-            <p class="footer-copy">&copy; 2026 La Nuova Sardegna &mdash; Tutti i diritti riservati</p>
-
         </div>
+
+        <!-- Footer SAE logo -->
+        <div class="footer-sae-bar">
+            <div class="footer-sae-inner">
+                <img src="https://placehold.co/100x90?text=SAE%0ASARDEGNA" alt="SAE Sardegna" width="100" height="90">
+            </div>
+        </div>
+
+        <!-- Footer Bottom: dark bar with legal text -->
+        <div class="footer-bottom">
+            <div class="footer-bottom-inner">
+                <p>Sae Sardegna SpA – sede legale Zona industriale Predda Niedda strada 31, 07100 Sassari, - Capitale sociale Euro 6.000.000 – R.E.A. SS – 213461 – Registro Imprese di Sassari 02328540683 – CF e Partita IVA 02328540683</p>
+                <p>I diritti delle immagini e dei testi sono riservati. È espressamente vietata la loro riproduzione con qualsiasi mezzo e l'adattamento totale o parziale.</p>
+            </div>
+        </div>
+
     </footer>
 
 </div><!-- /page-wrapper -->
 
-<!-- ============================================================
-     SIDE MENU
-     ============================================================ -->
+<!-- =========================================================
+     09. SIDE MENU
+========================================================== -->
 <div
         class="side-menu"
         id="sideMenu"
@@ -647,7 +1024,6 @@
         aria-label="Menu di navigazione laterale"
         aria-hidden="true"
 >
-
     <button class="side-menu-close" type="button" aria-label="Chiudi menu">✕</button>
 
     <div class="side-menu-brand">
@@ -726,109 +1102,21 @@
         </ul>
     </section>
 
-    <footer class="side-menu-footer" aria-label="Social nel menu laterale">
-        <div class="side-menu-social">
-            <a href="#" aria-label="Seguici su Facebook">
-                <i class="fa-brands fa-facebook" aria-hidden="true"></i>
-            </a>
-            <a href="#" aria-label="Seguici su X">
-                <i class="fa-brands fa-x-twitter" aria-hidden="true"></i>
-            </a>
-            <a href="#" aria-label="Seguici su Instagram">
-                <i class="fa-brands fa-instagram" aria-hidden="true"></i>
-            </a>
-            <a href="#" aria-label="Seguici su Whatsapp">
-                <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
-            </a>
-        </div>
-    </footer>
+    <div class="side-menu-social" aria-label="Seguici sui social">
+        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
+        <a href="#" aria-label="X"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+        <a href="#" aria-label="Whatsapp"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i></a>
+    </div>
+</div>
 
-</div><!-- /side-menu -->
-
+<!-- =========================================================
+     10. OVERLAY MENU
+========================================================== -->
 <div
         class="side-menu-overlay"
         id="sideMenuOverlay"
         aria-hidden="true"
 ></div>
-
-<!-- ============================================================
-     SCRIPT — Side menu
-     ============================================================ -->
-<script>
-    const hamburger = document.querySelector('.nav-hamburger');
-    const sideMenu  = document.getElementById('sideMenu');
-    const overlay   = document.getElementById('sideMenuOverlay');
-    const closeBtn  = document.querySelector('.side-menu-close');
-
-    function getFocusable() {
-        return Array.from(
-            sideMenu.querySelectorAll('a[href], button:not([disabled])')
-        );
-    }
-
-    function trapFocus(e) {
-        const focusable = getFocusable();
-        if (e.key !== 'Tab') return;
-
-        if (e.shiftKey) {
-            if (document.activeElement === focusable[0]) {
-                e.preventDefault();
-                focusable[focusable.length - 1].focus();
-            }
-        } else {
-            if (document.activeElement === focusable[focusable.length - 1]) {
-                e.preventDefault();
-                focusable[0].focus();
-            }
-        }
-    }
-
-    function openMenu() {
-        sideMenu.classList.add('open');
-        overlay.classList.add('open');
-        hamburger.setAttribute('aria-expanded', 'true');
-        sideMenu.setAttribute('aria-hidden', 'false');
-        overlay.setAttribute('aria-hidden', 'false');
-        document.body.classList.add('menu-open');
-        getFocusable()[0]?.focus();
-        sideMenu.addEventListener('keydown', trapFocus);
-    }
-
-    function closeMenu() {
-        sideMenu.classList.remove('open');
-        overlay.classList.remove('open');
-        hamburger.setAttribute('aria-expanded', 'false');
-        sideMenu.setAttribute('aria-hidden', 'true');
-        overlay.setAttribute('aria-hidden', 'true');
-        document.body.classList.remove('menu-open');
-        sideMenu.removeEventListener('keydown', trapFocus);
-        hamburger.focus();
-    }
-
-    hamburger.addEventListener('click', openMenu);
-    closeBtn.addEventListener('click', closeMenu);
-    overlay.addEventListener('click', closeMenu);
-
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && sideMenu.classList.contains('open')) {
-            closeMenu();
-        }
-    });
-
-    // Network SAE — duplica i loghi per lo scroll infinito
-    (function () {
-        const track = document.getElementById('networkTrack');
-        if (!track) return;
-
-        // Duplica tutti gli <li> e li appende nello stesso <ul>
-        const items = Array.from(track.children);
-        items.forEach(function (item) {
-            const clone = item.cloneNode(true);
-            clone.setAttribute('aria-hidden', 'true');
-            track.appendChild(clone);
-        });
-    })();
-</script>
-
 </body>
 </html>
