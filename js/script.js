@@ -289,3 +289,172 @@ if (searchToggle && searchOverlay && searchClose) {
         }
     });
 }
+
+
+/* =========================================================
+   11. SMART HEADER — Nascondi su scroll-down, mostra su scroll-up
+   Attivo solo su viewport ≤ 768px.
+========================================================= */
+
+(function () {
+    let lastScrollY = window.scrollY;
+    let ticking = false;
+    const DEAD_ZONE = 60; // px di scroll ignorati per evitare flickering
+
+    const mql = window.matchMedia('(max-width: 768px)');
+
+    function onScroll() {
+        if (ticking) return;
+
+        ticking = true;
+        requestAnimationFrame(function () {
+            ticking = false;
+
+            // Non agire se il media query non matcha o il menu laterale è aperto
+            if (!mql.matches || document.body.classList.contains('menu-open')) {
+                document.body.classList.remove('header-hidden', 'header-visible');
+                return;
+            }
+
+            const currentY = window.scrollY;
+            const delta = currentY - lastScrollY;
+
+            // In cima alla pagina: sempre visibile
+            if (currentY <= 10) {
+                document.body.classList.remove('header-hidden');
+                document.body.classList.remove('header-visible');
+                lastScrollY = currentY;
+                return;
+            }
+
+            // Scroll DOWN oltre la dead-zone → nascondi
+            if (delta > DEAD_ZONE) {
+                document.body.classList.add('header-hidden');
+                document.body.classList.remove('header-visible');
+                lastScrollY = currentY;
+            }
+            // Scroll UP oltre la dead-zone → mostra
+            else if (delta < -DEAD_ZONE) {
+                document.body.classList.remove('header-hidden');
+                document.body.classList.add('header-visible');
+                lastScrollY = currentY;
+            }
+        });
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    // Quando lo schermo cresce oltre 768px, rimuovi le classi
+    mql.addEventListener('change', function () {
+        if (!mql.matches) {
+            document.body.classList.remove('header-hidden', 'header-visible');
+        }
+    });
+})();
+
+
+/* =========================================================
+   12. MOBILE DOM RESTRUCTURING
+   Sposta logo e accedi nella nav bar, e video del giorno
+   dopo il primo piano. Attivo solo su ≤ 768px.
+========================================================= */
+
+(function () {
+    const mql = window.matchMedia('(max-width: 768px)');
+
+    // Riferimenti originali per ripristino
+    const navInner = document.querySelector('.nav-inner');
+    const siteHeader = document.querySelector('.site-header');
+    const siteLogo = document.querySelector('.site-logo');
+    const accediLink = document.querySelector('.header-actions .accedi');
+    const navHamburger = document.querySelector('.nav-hamburger');
+    const navSearch = document.querySelector('.nav-search');
+
+    const homeVideos = document.querySelector('.home-videos');
+    const homeMain = document.getElementById('main');
+    const heroSection = document.querySelector('.home-hero');
+
+    // Riferimenti ai parent originali
+    const headerTop = document.querySelector('.header-top');
+    const headerActions = document.querySelector('.header-actions');
+
+    // Posizioni originali per ripristino
+    let logoOriginalParent = siteLogo ? siteLogo.parentNode : null;
+    let logoOriginalNext = siteLogo ? siteLogo.nextElementSibling : null;
+    let accediOriginalParent = accediLink ? accediLink.parentNode : null;
+    let accediOriginalNext = accediLink ? accediLink.nextElementSibling : null;
+    let videoOriginalParent = homeVideos ? homeVideos.parentNode : null;
+    let videoOriginalNext = homeVideos ? homeVideos.nextElementSibling : null;
+
+    let isMobileLayout = false;
+
+    function applyMobileLayout() {
+        if (isMobileLayout) return;
+        isMobileLayout = true;
+
+        // 1. Sposta logo nella nav bar (dopo hamburger)
+        if (navInner && siteLogo && navHamburger) {
+            navHamburger.after(siteLogo);
+        }
+
+        // 2. Sposta accedi nella nav bar (alla fine, prima del search)
+        if (navInner && accediLink) {
+            if (navSearch) {
+                navSearch.before(accediLink);
+            } else {
+                navInner.appendChild(accediLink);
+            }
+        }
+
+        // 3. Sposta video del giorno dopo home-hero (primo piano)
+        if (homeMain && homeVideos && heroSection) {
+            heroSection.after(homeVideos);
+        }
+    }
+
+    function restoreDesktopLayout() {
+        if (!isMobileLayout) return;
+        isMobileLayout = false;
+
+        // Ripristina logo nella posizione originale
+        if (siteLogo && logoOriginalParent) {
+            if (logoOriginalNext) {
+                logoOriginalParent.insertBefore(siteLogo, logoOriginalNext);
+            } else {
+                logoOriginalParent.appendChild(siteLogo);
+            }
+        }
+
+        // Ripristina accedi nella posizione originale
+        if (accediLink && accediOriginalParent) {
+            if (accediOriginalNext) {
+                accediOriginalParent.insertBefore(accediLink, accediOriginalNext);
+            } else {
+                accediOriginalParent.appendChild(accediLink);
+            }
+        }
+
+        // Ripristina video nella posizione originale
+        if (homeVideos && videoOriginalParent) {
+            if (videoOriginalNext) {
+                videoOriginalParent.insertBefore(homeVideos, videoOriginalNext);
+            } else {
+                videoOriginalParent.appendChild(homeVideos);
+            }
+        }
+    }
+
+    function handleBreakpoint() {
+        if (mql.matches) {
+            applyMobileLayout();
+        } else {
+            restoreDesktopLayout();
+        }
+    }
+
+    // Applica al caricamento
+    handleBreakpoint();
+
+    // Ascolta i cambiamenti di viewport
+    mql.addEventListener('change', handleBreakpoint);
+})();
