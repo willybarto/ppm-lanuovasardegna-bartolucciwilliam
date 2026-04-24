@@ -6,7 +6,7 @@ fedele riproduzione del layout della homepage di un quotidiano online sardo,
 nel rispetto di rigidi vincoli tecnici, di accessibilità e di design
 responsive.
 
-💻 **Live Demo:** [link alla demo]
+💻 **Live Demo:** https://willybarto.github.io/ppm-lanuovasardegna-bartolucciwilliam/#
 
 ---
 
