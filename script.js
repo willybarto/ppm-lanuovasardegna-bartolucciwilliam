@@ -1,13 +1,11 @@
-/* Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad min */
-
+/* Gestione dell'apertura e chiusura del Menu Laterale (Hamburger) */
 const hamburger = document.querySelector('.nav-hamburger');
 const sideMenu = document.getElementById('sideMenu');
 const overlay = document.getElementById('sideMenuOverlay');
 const closeBtn = document.querySelector('.side-menu-close');
 
 
-/* Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, qu */
-
+/* Recupera tutti gli elementi focusabili all'interno del menu laterale per la gestione dell'accessibilità */
 function getFocusable() {
     if (!sideMenu) return [];
 
@@ -17,8 +15,7 @@ function getFocusable() {
 }
 
 
-/* Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad mi */
-
+/* Intrappola il focus all'interno del menu laterale quando è aperto, per evitare che gli screen reader leggano il contenuto in background */
 function trapFocus(e) {
     const focusable = getFocusable();
 
@@ -41,8 +38,7 @@ function trapFocus(e) {
 }
 
 
-/* Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad m */
-
+/* Apre il menu laterale e imposta correttamente gli attributi ARIA */
 function openMenu() {
     if (!sideMenu || !overlay || !hamburger) return;
 
@@ -64,8 +60,7 @@ function openMenu() {
 }
 
 
-/* Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad m */
-
+/* Chiude il menu laterale e ripristina gli attributi ARIA */
 function closeMenu() {
     if (!sideMenu || !overlay || !hamburger) return;
 
@@ -83,8 +78,7 @@ function closeMenu() {
 }
 
 
-/* Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad */
-
+/* Aggiunge i listener per i bottoni di apertura e chiusura del menu */
 if (hamburger) {
     hamburger.addEventListener('click', openMenu);
 }
@@ -97,13 +91,13 @@ if (overlay) {
     overlay.addEventListener('click', closeMenu);
 }
 
-/* Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud */
+/* Inizializzazione degli slider orizzontali (Scroller) per i video e le storie */
 (function () {
     function enableScroller(scroller, bar, wrap, track) {
         if (!scroller || !bar || !wrap || !track) return;
 
         let isDown = false;
-        let didDrag = false; // Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        let didDrag = false; // Indica se l'utente ha trascinato lo slider
         let startX = 0;
         let startScrollLeft = 0;
         let pointerId = null;
@@ -150,7 +144,7 @@ if (overlay) {
         scroller.addEventListener('scroll', sync, { passive: true });
         window.addEventListener('resize', sync);
 
-        // Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        // Gestione del click sulla barra spaziatrice o barra indicatrice
         wrap.addEventListener('click', function (e) {
             e.preventDefault();
             e.stopPropagation();
@@ -162,7 +156,7 @@ if (overlay) {
             if (e.pointerType === 'mouse' && e.button !== 0) return;
 
             isDown = true;
-            didDrag = false; // Lorem ipsum dolor sit amet
+            didDrag = false; // Reset del flag di trascinamento
             pointerId = e.pointerId;
             startX = e.clientX;
             startScrollLeft = scroller.scrollLeft;
@@ -178,7 +172,7 @@ if (overlay) {
             if (!isDown) return;
 
             const deltaX = e.clientX - startX;
-            if (Math.abs(deltaX) > 4) didDrag = true; // Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            if (Math.abs(deltaX) > 4) didDrag = true; // Se il movimento è significativo, considera l'azione come drag
             scroller.scrollLeft = startScrollLeft - deltaX;
         });
 
@@ -214,7 +208,7 @@ if (overlay) {
         sync();
     }
 
-    // Lorem ipsum dolor sit amet
+    // Inizializzazione dello slider Video in evidenza
     const gridTop = document.getElementById('videoScrollerTop');
     const barTop  = document.getElementById('videoIndicator');
     const wrapTop = document.querySelector('.video-indicator-wrap');
@@ -222,18 +216,18 @@ if (overlay) {
 
     enableScroller(gridTop, barTop, wrapTop, trackTop);
 
-    // Lorem ipsum
+    // Inizializzazione dello slider Ultimi Video
     const gridBottom  = document.getElementById('videoScrollerBottom');
     const barBottom   = document.getElementById('videoIndicatorBottom');
     const wrapBottom  = document.getElementById('latestVideosIndicatorWrap');
-    // Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    // Elemento traccia dell'indicatore
     const trackBottom = wrapBottom
         ? wrapBottom.querySelector('.latest-videos__indicator-track')
         : null;
 
     enableScroller(gridBottom, barBottom, wrapBottom, trackBottom);
 
-    // Lorem ipsum
+    // Inizializzazione dello slider Network SAE
     const networkStrip = document.getElementById('networkStrip');
     const networkBar   = document.getElementById('networkIndicator');
     const networkWrap  = document.querySelector('.network-indicator-wrap');
@@ -241,7 +235,7 @@ if (overlay) {
 
     enableScroller(networkStrip, networkBar, networkWrap, networkTrack);
 
-    // Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    // Inizializzazione dello slider Storie e Personaggi
     const storieScroller  = document.getElementById('storieChannelsScroller');
     const storieBar       = document.getElementById('storieChannelsIndicator');
     const storieWrap      = document.getElementById('storieChannelsIndicatorWrap');
@@ -249,8 +243,7 @@ if (overlay) {
     enableScroller(storieScroller, storieBar, storieWrap, storieTrack);
 })();
 
-/* Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis */
-
+/* Gestione della barra di ricerca a comparsa (Search Overlay) */
 const searchToggle = document.getElementById('searchToggle');
 const searchClose = document.getElementById('searchClose');
 const searchOverlay = document.getElementById('searchOverlay');
@@ -266,7 +259,7 @@ if (searchToggle && searchOverlay && searchClose) {
         searchOverlay.classList.remove('open');
     });
 
-    // Lorem ipsum
+    // Chiude la ricerca premendo il tasto ESC
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && searchOverlay.classList.contains('open')) {
             searchOverlay.classList.remove('open');
@@ -275,12 +268,11 @@ if (searchToggle && searchOverlay && searchClose) {
 }
 
 
-/* Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commo */
-
+/* Gestione della scomparsa/comparsa dell'header durante lo scroll su dispositivi mobili */
 (function () {
     let lastScrollY = window.scrollY;
     let ticking = false;
-    const DEAD_ZONE = 60; // Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    const DEAD_ZONE = 60; // Zona morta per ignorare i piccoli scroll
 
     const mql = window.matchMedia('(max-width: 768px)');
 
@@ -291,7 +283,7 @@ if (searchToggle && searchOverlay && searchClose) {
         requestAnimationFrame(function () {
             ticking = false;
 
-            // Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do ei
+            // Annulla l'effetto se non siamo su mobile o se il menu è aperto
             if (!mql.matches || document.body.classList.contains('menu-open')) {
                 document.body.classList.remove('header-hidden', 'header-visible');
                 return;
@@ -300,7 +292,7 @@ if (searchToggle && searchOverlay && searchClose) {
             const currentY = window.scrollY;
             const delta = currentY - lastScrollY;
 
-            // Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            // Torna in cima: mostra l'header
             if (currentY <= 10) {
                 document.body.classList.remove('header-hidden');
                 document.body.classList.remove('header-visible');
@@ -308,13 +300,13 @@ if (searchToggle && searchOverlay && searchClose) {
                 return;
             }
 
-            // Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            // Scroll verso il basso: nasconde l'header
             if (delta > DEAD_ZONE) {
                 document.body.classList.add('header-hidden');
                 document.body.classList.remove('header-visible');
                 lastScrollY = currentY;
             }
-            // Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            // Scroll verso l'alto: mostra l'header
             else if (delta < -DEAD_ZONE) {
                 document.body.classList.remove('header-hidden');
                 document.body.classList.add('header-visible');
@@ -325,7 +317,7 @@ if (searchToggle && searchOverlay && searchClose) {
 
     window.addEventListener('scroll', onScroll, { passive: true });
 
-    // Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    // Reset delle classi quando si passa a desktop
     mql.addEventListener('change', function () {
         if (!mql.matches) {
             document.body.classList.remove('header-hidden', 'header-visible');
@@ -334,8 +326,7 @@ if (searchToggle && searchOverlay && searchClose) {
 })();
 
 
-/* Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo cons */
-
+/* Riorganizzazione del DOM per la vista mobile: sposta la sezione video */
 (function () {
     const mql = window.matchMedia('(max-width: 768px)');
     const homeVideos = document.querySelector('.home-videos');
@@ -350,12 +341,12 @@ if (searchToggle && searchOverlay && searchClose) {
         if (isMobileLayout) return;
         isMobileLayout = true;
 
-        // Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempo
+        // Inserisce i video subito dopo l'articolo in evidenza su mobile
         const firstFeatured = document.querySelector('.ev-card--featured');
         if (homeMain && homeVideos && firstFeatured) {
             firstFeatured.after(homeVideos);
         } else if (homeMain && homeVideos && heroSection) {
-            // Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            // Fallback se l'articolo in evidenza non c'è
             heroSection.after(homeVideos);
         }
     }
@@ -364,7 +355,7 @@ if (searchToggle && searchOverlay && searchClose) {
         if (!isMobileLayout) return;
         isMobileLayout = false;
 
-        // Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        // Ripristina la posizione originale su desktop
         if (homeVideos && videoOriginalParent) {
             if (videoOriginalNext) {
                 videoOriginalParent.insertBefore(homeVideos, videoOriginalNext);
@@ -386,23 +377,22 @@ if (searchToggle && searchOverlay && searchClose) {
     mql.addEventListener('change', handleBreakpoint);
 })();
 
-/* Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim venia */
+/* Gestione dell'apertura a tendina delle sezioni nel menu laterale (mobile) */
 (function() {
     const sectionHeaders = document.querySelectorAll('.side-menu-section h2');
 
     sectionHeaders.forEach(header => {
         header.addEventListener('click', () => {
             const mql = window.matchMedia('(max-width: 1024px)');
-            if (!mql.matches) return; // Lorem ipsum dolor sit amet
+            if (!mql.matches) return; // Funziona solo su mobile/tablet
 
             const section = header.parentElement;
 
-            // Lorem ipsum dolor sit amet
+            // Toggle della classe open per mostrare/nascondere la lista
             if (section.classList.contains('open')) {
                 section.classList.remove('open');
             } else {
-                // Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiu
-                /* Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud */
+                // Chiude tutte le altre sezioni e apre quella cliccata
                 section.classList.add('open');
             }
         });
