@@ -1704,10 +1704,6 @@ button:focus-visible {
   text-decoration: none;
 }
 
-.storie-channel-card h4 a:hover {
-  color: var(--color-primary);
-}
-
 .storie-channels__indicator-wrap {
   width: 120px;
   height: 2px;
@@ -1795,10 +1791,6 @@ button:focus-visible {
   transition: color 0.18s;
 }
 
-.storie-news-list li a:hover {
-  color: var(--color-primary);
-}
-
 /* =========================================================
    10. SANI E BELLI
 ========================================================= */
@@ -1877,10 +1869,6 @@ button:focus-visible {
   transition: transform 0.3s ease;
 }
 
-.sani-belli__media:hover img {
-  transform: scale(1.03);
-}
-
 .sani-belli__card .kicker {
   margin: 6px 0 4px;
   font-family: var(--font-display);
@@ -1904,10 +1892,6 @@ button:focus-visible {
 .sani-belli__title a {
   color: var(--color-text);
   text-decoration: none;
-}
-
-.sani-belli__title a:hover {
-  color: var(--color-primary);
 }
 
 .sani-belli__byline {
@@ -2149,10 +2133,6 @@ button:focus-visible {
   font-size: 1.4rem;
   color: #111;
   transition: opacity 0.18s;
-}
-
-.footer-social a:hover {
-  opacity: 0.65;
 }
 
 .footer-nav-links {
